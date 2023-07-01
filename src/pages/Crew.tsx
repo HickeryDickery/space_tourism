@@ -1,20 +1,9 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { crew } from "../constants";
-import { useState, useEffect } from "react";
-import { preloadImages } from "../utils";
+import { useState } from "react";
 
 const Crew = () => {
   const [crewIndex, setCrewIndex] = useState(0);
-
-  useEffect(() => {
-    const imagePaths = Array<string>();
-
-    crew.map((crewMember) => {
-      imagePaths.push(crewMember.images.png);
-    });
-
-    preloadImages(imagePaths);
-  }, []);
 
   return (
     <motion.div

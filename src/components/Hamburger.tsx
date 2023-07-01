@@ -2,8 +2,7 @@ import open from "../assets/shared/icon-hamburger.svg";
 import close from "../assets/shared/icon-close.svg";
 import { navLinks } from "../constants";
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
-import { preloadImages } from "../utils";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 interface HamburgerProps {
@@ -14,12 +13,6 @@ interface HamburgerProps {
 const Hamburger = ({ active, setActive }: HamburgerProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const imagePaths = [open, close];
-
-    preloadImages(imagePaths);
-  }, []);
 
   useEffect(() => {
     if (isOpen) {
@@ -35,7 +28,7 @@ const Hamburger = ({ active, setActive }: HamburgerProps) => {
 
   return (
     <div className="sm:hidden block">
-      <div className="h-full flex items-center z-20">
+      <div className="min-h-full flex items-center z-20">
         <img
           alt="hamburger menu open/close"
           src={`${isOpen === true ? close : open}`}

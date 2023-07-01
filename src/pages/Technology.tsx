@@ -1,7 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { technology } from "../constants";
 import { useEffect, useState } from "react";
-import { preloadImages } from "../utils";
 
 const Technology = () => {
   const [techIndex, setTechIndex] = useState(0);
@@ -15,15 +14,6 @@ const Technology = () => {
     window.addEventListener("resize", handleResize);
 
     handleResize();
-
-    const imagePaths = Array<string>();
-
-    technology.map((tech) => {
-      imagePaths.push(tech.images.portrait);
-      imagePaths.push(tech.images.landscape);
-    });
-
-    preloadImages(imagePaths);
 
     return () => {
       window.removeEventListener("resize", handleResize);

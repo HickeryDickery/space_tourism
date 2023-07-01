@@ -19,7 +19,7 @@ const Navbar = () => {
   }, [location]);
 
   return (
-    <nav className="w-full flex items-center absolute top-0 z-20  text-tertiary sm:max-md:text-nav-tablet text-nav-desktop ">
+    <nav className="w-full flex items-center fixed sm:absolute top-0 z-50  text-tertiary sm:max-md:text-nav-tablet text-nav-desktop ">
       <div className="flex w-full justify-between m-5 sm:m-0 lg:my-10">
         <Link to="/" className="flex items-center">
           <img

@@ -1,21 +1,10 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { destinations } from "../constants";
-import { useState, useEffect } from "react";
-import { preloadImages } from "../utils";
+import { useState } from "react";
 
 const Destination = () => {
   const [destinationIndex, setDestinationIndex] = useState(0);
   const [activeDestination, setActiveDestination] = useState("Moon");
-
-  useEffect(() => {
-    const imagePaths = Array<string>();
-
-    destinations.map((destination) => {
-      imagePaths.push(destination.images.png);
-    });
-
-    preloadImages(imagePaths);
-  }, []);
 
   return (
     <motion.div
