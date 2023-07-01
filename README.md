@@ -15,8 +15,6 @@ This is a solution to the [Space tourism website challenge on Frontend Mentor](h
   - [Useful resources](#useful-resources)
 - [Author](#author)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
-
 ## Overview
 
 ### The challenge
@@ -36,8 +34,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Code on GitHub](https://github.com/HickeryDickery/space_tourism)
+- Live Site URL: [Deployed on Vercel](https://space-tourism-nu-eight.vercel.app/)
 
 ## My process
 
@@ -54,29 +52,53 @@ Users should be able to:
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+One of the key concepts I learned was the effective utilization of the `<AnimatePresence>` tag from the Framer-Motion library, which enables the implementation of exit animations not only for individual components but also for entire pages. Here's how it works: when a React component is unmounted, it is immediately removed from the DOM. However, by enclosing a motion component from the Framer-Motion library within the `<AnimatePresence>` tag, we can retain it in the DOM for a duration, allowing us to animate its exit gracefully. To achieve this, we simply provide the necessary initial and exit animation properties to the motion component. Also, keep in mind to utilize the mode prop of the `<AnimatePresence>` tag appropriately.
 
-To see how you can add code snippets, see below:
+Animating pages requires some additional considerations, especially when using a router to navigate between them. In such cases, it's crucial to wrap the routes within the `<AnimatePresence>` tag. To animate the exit of the current page and the entrance of the new page, you should include a key prop within the `<Routes>` tag. You can use the useLocation hook from react-router-dom to retrieve the current location and use it as the key.
+
+#### Examples
+
+Code from `Crew` page showing how to animate components:
 
 ```html
-<h1>Some HTML code I'm proud of</h1>
+<AnimatePresence mode="wait">
+  <motion.span
+    key={crew[crewIndex].role}
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: 0.4 }}
+    className="text-h4-mobile sm:text-h4-tablet lg:text-h4-desktop font-bellefair text-gray-400"
+  >
+    {crew[crewIndex].role.toUpperCase()}
+  </motion.span>
+</AnimatePresence>
 ```
 
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
+Code from `AnimatedRoutes` component showing how to animate pages:
 
 ```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
+import { Route, Routes, useLocation } from "react-router-dom";
+import { Home, Crew, Destination, Technology } from "./pages";
+import { AnimatePresence } from "framer-motion";
+
+const AnimatedRoutes = () => {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<Home />} />
+        <Route path="/crew" element={<Crew />} />
+        <Route path="/destination" element={<Destination />} />
+        <Route path="/technology" element={<Technology />} />
+      </Routes>
+    </AnimatePresence>
+  );
+};
+
+export default AnimatedRoutes;
 ```
-
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
-
-**Note: Delete this note and the content within this section and replace with your own learnings.**
 
 ### Continued development
 
@@ -93,4 +115,4 @@ Tailwindcss is a great CSS utility framework and allows for faster development o
 
 - Website - [Khizar Nawab](https://www.your-site.com)
 - Frontend Mentor - [@HickeryDickery](https://www.frontendmentor.io/profile/HickeryDickery)
-- Github - [@HickeryDickery](https://github.com/HickeryDickery)
+- GitHub - [@HickeryDickery](https://github.com/HickeryDickery)
