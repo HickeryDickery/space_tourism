@@ -49,7 +49,7 @@ const Technology = () => {
             <ul className="flex lg:flex-col flex-row justify-center items-center lg:justify-start gap-x-6 lg:gap-0">
               {technology.map((tech, index) => (
                 <li
-                  key="tech"
+                  key={tech.name}
                   onClick={() => {
                     setTechIndex(index);
                   }}
@@ -70,7 +70,6 @@ const Technology = () => {
               </span>
               <AnimatePresence mode="wait">
                 <motion.span
-                  key={technology[techIndex].name}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}

@@ -45,7 +45,6 @@ const Crew = () => {
                   {crew[crewIndex].role.toUpperCase()}
                 </motion.span>
                 <motion.span
-                  key={crew[crewIndex].name}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
@@ -69,6 +68,7 @@ const Crew = () => {
             <ul className="w-full flex flex-row justify-center lg:justify-start gap-4 lg:my-28 my-6">
               {crew.map((crewMember, index) => (
                 <li
+                  key={crewMember.name}
                   onClick={() => {
                     setCrewIndex(index);
                   }}
