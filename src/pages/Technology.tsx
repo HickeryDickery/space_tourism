@@ -70,6 +70,7 @@ const Technology = () => {
               </span>
               <AnimatePresence mode="wait">
                 <motion.span
+                  key={technology[techIndex].name}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
@@ -78,6 +79,9 @@ const Technology = () => {
                 >
                   {technology[techIndex].name.toUpperCase()}
                 </motion.span>
+              </AnimatePresence>
+
+              <AnimatePresence mode="wait">
                 <motion.span
                   key={technology[techIndex].description}
                   initial={{ opacity: 0 }}

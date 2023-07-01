@@ -44,7 +44,11 @@ const Crew = () => {
                 >
                   {crew[crewIndex].role.toUpperCase()}
                 </motion.span>
+              </AnimatePresence>
+
+              <AnimatePresence mode="wait">
                 <motion.span
+                  key={crew[crewIndex].name}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
@@ -53,6 +57,9 @@ const Crew = () => {
                 >
                   {crew[crewIndex].name.toUpperCase()}
                 </motion.span>
+              </AnimatePresence>
+
+              <AnimatePresence mode="wait">
                 <motion.p
                   key={crew[crewIndex].bio}
                   initial={{ opacity: 0 }}

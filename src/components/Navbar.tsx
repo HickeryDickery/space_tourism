@@ -23,7 +23,7 @@ const Navbar = () => {
       <div className="flex w-full justify-between m-5 sm:m-0 lg:my-10">
         <Link to="/" className="flex items-center">
           <img
-            src="/src/assets/shared/logo.svg"
+            src="./src/assets/shared/logo.svg"
             alt="logo"
             className="object-contain lg:mx-14 sm:mx-10 w-[40px] h-[40px] sm:w-[48px] sm:h-[48px] "
           />

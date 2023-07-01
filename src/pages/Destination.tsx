@@ -83,7 +83,8 @@ const Destination = () => {
                 >
                   {destinations[destinationIndex].name.toUpperCase()}
                 </motion.span>
-
+              </AnimatePresence>
+              <AnimatePresence mode="wait">
                 <motion.p
                   key={destinations[destinationIndex].description}
                   initial={{ opacity: 0 }}
